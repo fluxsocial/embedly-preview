@@ -1,56 +1,86 @@
+import 'dart:convert';
+
+import 'package:embedly_preview_example/api.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:embedly_preview/embedly_preview.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      home: OEmbedHome(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
+class OEmbedHome extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _OEmbedHomeState createState() => _OEmbedHomeState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
+class _OEmbedHomeState extends State<OEmbedHome> {
+  TextEditingController controller;
+  OEmbedResponse previewData;
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    controller = TextEditingController();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await EmbedlyPreview.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
+  Future<void> fetchUrl(final String url) async {
+    final Uri _url = Uri.http("api.embedly.com", "/1/oembed", {
+      "url": url,
+      "key": API.api,
+      "meta_images": "true",
+      "maxwidth": "400",
+      "maxheight": "400",
+    });
+    final response = await http.get(_url.toString());
+    final _oEmbedResponse = OEmbedResponse.fromMap(
+      json.decode(
+        utf8.decode(response.bodyBytes),
+      ),
+    );
     setState(() {
-      _platformVersion = platformVersion;
+      previewData = _oEmbedResponse;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: controller,
+                      onSubmitted: (value) => fetchUrl(value),
+                    ),
+                  ),
+                  RaisedButton(
+                    onPressed: () => fetchUrl(controller.value.text),
+                    child: Text("Preview"),
+                  )
+                ],
+              ),
+            ),
+            if (previewData != null)
+              OEmbedWidget(
+                data: previewData,
+              )
+          ],
         ),
       ),
     );
