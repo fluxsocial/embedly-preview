@@ -7,3 +7,8 @@ example/lib/api.dart
 .pub/
 
 build/
+/example/ios/Podfile.lock
+/.idea/workspace.xml
+/embedly_preview.iml
+/example/ios/Runner.xcodeproj/project.pbxproj
+/example/ios/Runner.xcworkspace/contents.xcworkspacedata
