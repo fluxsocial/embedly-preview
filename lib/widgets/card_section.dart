@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class EmbedlyCardSection extends StatelessWidget {
@@ -18,23 +17,7 @@ class EmbedlyCardSection extends StatelessWidget {
     if (vertical) {
       return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 4.0),
-            Flexible(
-              child: Text(info),
-            ),
-          ],
-        ),
+        child: Text(info),
       );
     } else {
       return Padding(
@@ -49,7 +32,9 @@ class EmbedlyCardSection extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 4.0),
-            Text(info),
+            Flexible(
+              child: Text(info),
+            ),
           ],
         ),
       );
