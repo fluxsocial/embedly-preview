@@ -29,13 +29,13 @@ class EmbdelyLinkPreview extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 12.0),
-            if (data.title != null)
+            if (data.title != null || data.title.isNotEmpty)
               Text(
                 data.title,
                 style: theme.headingText,
               ),
             const SizedBox(height: 8.0),
-            if (data.description != null)
+            if (data.description != null || data.title.isNotEmpty)
               Text(
                 data.description,
                 style: theme.subheadingText,
