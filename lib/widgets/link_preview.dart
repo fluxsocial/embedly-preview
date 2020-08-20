@@ -15,33 +15,33 @@ class EmbedlyLinkPreview extends StatelessWidget {
     final theme = EmbedlyThemeProvider.of(context);
     return Card(
       color: theme.backgroundColor,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (data.thumbnailUrl != null)
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  data.thumbnailUrl,
-                  fit: BoxFit.cover,
-                ),
+      elevation: 0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (data.thumbnailUrl != null)
+            Align(
+              alignment: Alignment.center,
+              child: Image.network(
+                data.thumbnailUrl,
+                fit: BoxFit.cover,
               ),
-            const SizedBox(height: 12.0),
-            if (data.title != null || data.title.isNotEmpty)
-              Text(
-                data.title,
-                style: theme.headingText,
-              ),
-            const SizedBox(height: 8.0),
-            if (data.description != null || data.title.isNotEmpty)
-              Text(
-                data.description,
-                style: theme.subheadingText,
-              )
-          ],
-        ),
+            ),
+          const SizedBox(height: 12.0),
+          if (data.title != null || data.title.isNotEmpty)
+            Text(
+              data.title,
+              style: theme.headingText,
+              maxLines: 3,
+            ),
+          const SizedBox(height: 8.0),
+          if (data.description != null || data.title.isNotEmpty)
+            Text(
+              data.description,
+              style: theme.subheadingText,
+              maxLines: 3,
+            )
+        ],
       ),
     );
   }
