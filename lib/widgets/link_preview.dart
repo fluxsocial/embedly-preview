@@ -2,8 +2,8 @@ import 'package:embedly_preview/embedly_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:embedly_preview/theme/theme.dart';
 
-class EmbdelyLinkPreview extends StatelessWidget {
-  const EmbdelyLinkPreview({
+class EmbedlyLinkPreview extends StatelessWidget {
+  const EmbedlyLinkPreview({
     Key key,
     @required this.data,
   }) : super(key: key);

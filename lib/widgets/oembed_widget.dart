@@ -47,18 +47,18 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
         builder: (BuildContext context) {
           switch (widget.data.type) {
             case OEmbedType.rich:
-              return EmbdelyLinkPreview(
+              return EmbedlyLinkPreview(
                 data: widget.data,
               );
             case OEmbedType.link:
-              return EmbdelyLinkPreview(
+              return EmbedlyLinkPreview(
                 data: widget.data,
               );
             case OEmbedType.photo:
               return SizedBox(
                 height: widget.data.height ?? 300,
                 width: widget.data.width,
-                child: EmbdelyLinkPreview(
+                child: EmbedlyLinkPreview(
                   data: widget.data,
                 ),
               );
@@ -70,7 +70,7 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
               return SizedBox(
                 height: widget.data.height ?? 300,
                 width: widget.data.width,
-                child: EmbdelyLinkPreview(
+                child: EmbedlyLinkPreview(
                   data: widget.data,
                 ),
               );
