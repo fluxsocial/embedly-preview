@@ -27,22 +27,23 @@ class EmbedlyLinkPreview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (data.thumbnailUrl != null)
-            Align(
-              alignment: Alignment.center,
+            Container(
+              margin: const EdgeInsets.only(bottom: 12),
               child: Image.network(
                 data.thumbnailUrl,
                 fit: BoxFit.cover,
               ),
             ),
-          const SizedBox(height: 12.0),
           if (data.title != null || data.title.isNotEmpty)
-            Text(
-              data.title,
-              style: theme.headingText,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
+            Container(
+              margin: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                data.title,
+                style: theme.headingText,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-          const SizedBox(height: 8.0),
           if (data.description != null || data.title.isNotEmpty)
             Text(
               data.description,
