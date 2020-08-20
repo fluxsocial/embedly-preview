@@ -6,16 +6,23 @@ class EmbedlyLinkPreview extends StatelessWidget {
   const EmbedlyLinkPreview({
     Key key,
     @required this.data,
+    @required this.preview,
   }) : super(key: key);
 
   final OEmbedResponse data;
+  final bool preview;
 
   @override
   Widget build(BuildContext context) {
     final theme = EmbedlyThemeProvider.of(context);
-    return Card(
-      color: theme.backgroundColor,
-      elevation: 0,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Theme.of(context).dividerColor,
+          width: .5,
+        ),
+        borderRadius: BorderRadius.circular(9),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,6 +40,7 @@ class EmbedlyLinkPreview extends StatelessWidget {
               data.title,
               style: theme.headingText,
               maxLines: 3,
+              overflow: TextOverflow.ellipsis,
             ),
           const SizedBox(height: 8.0),
           if (data.description != null || data.title.isNotEmpty)
@@ -40,6 +48,7 @@ class EmbedlyLinkPreview extends StatelessWidget {
               data.description,
               style: theme.subheadingText,
               maxLines: 3,
+              overflow: TextOverflow.ellipsis,
             )
         ],
       ),

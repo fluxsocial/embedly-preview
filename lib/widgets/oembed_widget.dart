@@ -10,10 +10,12 @@ class OEmbedWidget extends StatefulWidget {
     Key key,
     @required this.data,
     this.theme,
+    @required this.preview,
   }) : super(key: key);
 
   final OEmbedResponse data;
   final EmbedlyThemeData theme;
+  final bool preview;
 
   @override
   _OEmbedWidgetState createState() => _OEmbedWidgetState();
@@ -49,10 +51,12 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
             case OEmbedType.rich:
               return EmbedlyLinkPreview(
                 data: widget.data,
+                preview: widget.preview,
               );
             case OEmbedType.link:
               return EmbedlyLinkPreview(
                 data: widget.data,
+                preview: widget.preview,
               );
             case OEmbedType.photo:
               return SizedBox(
@@ -60,6 +64,7 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
                 width: widget.data.width,
                 child: EmbedlyLinkPreview(
                   data: widget.data,
+                  preview: widget.preview,
                 ),
               );
             case OEmbedType.unsupported:
@@ -72,6 +77,7 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
                 width: widget.data.width,
                 child: EmbedlyLinkPreview(
                   data: widget.data,
+                  preview: widget.preview,
                 ),
               );
           }
