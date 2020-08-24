@@ -2,8 +2,8 @@ import 'package:embedly_preview/embedly_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:embedly_preview/theme/theme.dart';
 
-class EmbedlyLinkOpen extends StatelessWidget {
-  const EmbedlyLinkOpen({
+class EmbedlyLinkExpanded extends StatelessWidget {
+  const EmbedlyLinkExpanded({
     Key key,
     @required this.data,
   }) : super(key: key);

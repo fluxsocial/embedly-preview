@@ -1,8 +1,7 @@
-import 'package:embedly_preview/const.dart';
 import 'package:embedly_preview/models/embedly_response_model.dart';
 import 'package:embedly_preview/theme/embedly_theme.dart';
 import 'package:embedly_preview/widgets/link_preview.dart';
-import 'package:embedly_preview/widgets/link_open.dart';
+import 'package:embedly_preview/widgets/link_expanded.dart';
 import 'package:embedly_preview/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +10,13 @@ class OEmbedWidget extends StatefulWidget {
     Key key,
     @required this.data,
     this.theme,
+    @required this.expanded,
     @required this.preview,
   }) : super(key: key);
 
   final OEmbedResponse data;
   final EmbedlyThemeData theme;
+  final bool expanded;
   final bool preview;
 
   @override
@@ -53,8 +54,9 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
               return SizedBox();
               break;
             default:
-              if (widget.preview) return EmbedlyLinkPreview(data: widget.data);
-              if (!widget.preview) return EmbedlyLinkOpen(data: widget.data);
+              if (widget.expanded) return EmbedlyLinkPreview(data: widget.data);
+              if (!widget.expanded)
+                return EmbedlyLinkExpanded(data: widget.data);
           }
           return SizedBox();
         },
