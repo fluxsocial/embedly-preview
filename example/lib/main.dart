@@ -48,6 +48,7 @@ class _OEmbedHomeState extends State<OEmbedHome> {
         utf8.decode(response.bodyBytes),
       ),
     );
+
     setState(() {
       previewData = _oEmbedResponse;
     });

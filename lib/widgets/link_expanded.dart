@@ -44,7 +44,7 @@ class EmbedlyLinkExpanded extends StatelessWidget {
                 ),
               ),
             ),
-          data.title.isEmpty && data.description.isEmpty
+          data.description.isEmpty
               ? const SizedBox()
               : Flexible(
                   child: Container(
@@ -56,16 +56,6 @@ class EmbedlyLinkExpanded extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (data.title.isNotEmpty || data.title != '')
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: Text(
-                              data.title,
-                              style: theme.headingText,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
                         if (data.description.isNotEmpty)
                           Text(
                             data.description,
