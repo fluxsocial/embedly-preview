@@ -3,8 +3,8 @@ import 'dart:convert';
 // import 'package:embedly_preview_example/api.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
 import 'package:embedly_preview/embedly_preview.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(
@@ -20,8 +20,8 @@ class OEmbedHome extends StatefulWidget {
 }
 
 class _OEmbedHomeState extends State<OEmbedHome> {
-  TextEditingController controller;
-  OEmbedResponse previewData;
+  TextEditingController? controller;
+  OEmbedResponse? previewData;
   @override
   void initState() {
     super.initState();
@@ -30,7 +30,7 @@ class _OEmbedHomeState extends State<OEmbedHome> {
 
   @override
   void dispose() {
-    controller.dispose();
+    controller!.dispose();
     super.dispose();
   }
 
@@ -42,7 +42,7 @@ class _OEmbedHomeState extends State<OEmbedHome> {
       "maxwidth": "400",
       "maxheight": "400",
     });
-    final response = await http.get(_url.toString());
+    final response = await http.get(Uri.parse(_url.toString()));
     final _oEmbedResponse = OEmbedResponse.fromMap(
       json.decode(
         utf8.decode(response.bodyBytes),
@@ -70,8 +70,8 @@ class _OEmbedHomeState extends State<OEmbedHome> {
                       onSubmitted: (value) => fetchUrl(value),
                     ),
                   ),
-                  RaisedButton(
-                    onPressed: () => fetchUrl(controller.value.text),
+                  TextButton(
+                    onPressed: () => fetchUrl(controller!.value.text),
                     child: Text("Preview"),
                   )
                 ],
@@ -79,7 +79,9 @@ class _OEmbedHomeState extends State<OEmbedHome> {
             ),
             if (previewData != null)
               OEmbedWidget(
-                data: previewData,
+                data: previewData!,
+                expanded: true,
+                preview: false,
               )
           ],
         ),
