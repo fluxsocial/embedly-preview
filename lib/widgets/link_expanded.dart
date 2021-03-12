@@ -4,8 +4,8 @@ import 'package:embedly_preview/theme/theme.dart';
 
 class EmbedlyLinkExpanded extends StatelessWidget {
   const EmbedlyLinkExpanded({
-    Key key,
-    @required this.data,
+    Key? key,
+    required this.data,
   }) : super(key: key);
 
   final OEmbedResponse data;
@@ -37,14 +37,14 @@ class EmbedlyLinkExpanded extends StatelessWidget {
                   borderRadius: BorderRadius.circular(9),
                 ),
                 child: Image.network(
-                  data.thumbnailUrl,
+                  data.thumbnailUrl!,
                   fit: BoxFit.cover,
                   height: MediaQuery.of(context).size.height * .14,
                   width: MediaQuery.of(context).size.height * .14,
                 ),
               ),
             ),
-          data.description.isEmpty
+          data.description!.isEmpty
               ? const SizedBox()
               : Flexible(
                   child: Container(
@@ -56,10 +56,10 @@ class EmbedlyLinkExpanded extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (data.description.isNotEmpty)
+                        if (data.description!.isNotEmpty)
                           Text(
-                            data.description,
-                            style: theme.subheadingText,
+                            data.description!,
+                            style: theme!.subheadingText,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),

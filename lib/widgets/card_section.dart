@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class EmbedlyCardSection extends StatelessWidget {
   const EmbedlyCardSection({
-    Key key,
-    @required this.title,
-    @required this.info,
+    Key? key,
+    required this.title,
+    required this.info,
     this.vertical = true,
   }) : super(key: key);
 

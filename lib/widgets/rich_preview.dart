@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //TODO(Nash): Find an optimal way to display rich content in the application.
 class RichPreview extends StatelessWidget {
-  const RichPreview({Key key, @required this.data}) : super(key: key);
+  const RichPreview({Key? key, required this.data}) : super(key: key);
 
   final OEmbedResponse data;
   @override

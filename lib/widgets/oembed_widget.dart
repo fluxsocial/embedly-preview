@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 
 class OEmbedWidget extends StatefulWidget {
   OEmbedWidget({
-    Key key,
-    @required this.data,
+    Key? key,
+    required this.data,
     this.theme,
-    @required this.expanded,
-    @required this.preview,
+    required this.expanded,
+    required this.preview,
   }) : super(key: key);
 
   final OEmbedResponse data;
-  final EmbedlyThemeData theme;
+  final EmbedlyThemeData? theme;
   final bool expanded;
   final bool preview;
 
@@ -24,7 +24,7 @@ class OEmbedWidget extends StatefulWidget {
 }
 
 class _OEmbedWidgetState extends State<OEmbedWidget> {
-  EmbedlyThemeData _theme;
+  EmbedlyThemeData? _theme;
   @override
   void initState() {
     super.initState();
@@ -52,7 +52,6 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
           switch (widget.data.type) {
             case OEmbedType.unsupported:
               return SizedBox();
-              break;
             default:
               if (widget.expanded) return EmbedlyLinkPreview(data: widget.data);
               if (!widget.expanded)

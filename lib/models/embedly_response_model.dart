@@ -6,8 +6,8 @@ enum OEmbedType { video, link, photo, rich, unsupported }
 /// The fields `type` and `version` must be supplied.
 class OEmbedResponse {
   OEmbedResponse({
-    @required this.type,
-    @required this.version,
+    required this.type,
+    required this.version,
     this.title,
     this.description,
     this.authorName,
@@ -44,20 +44,20 @@ class OEmbedResponse {
   final OEmbedType type;
   final double version;
   // Optional
-  final String title;
-  final String description;
-  final String authorName;
-  final String authorUrl;
-  final String providerName;
-  final String thumbnailUrl;
-  final double thumbnailWidth;
-  final double thumbnailHeight;
-  final double width;
-  final double height;
-  final String html;
+  final String? title;
+  final String? description;
+  final String? authorName;
+  final String? authorUrl;
+  final String? providerName;
+  final String? thumbnailUrl;
+  final double? thumbnailWidth;
+  final double? thumbnailHeight;
+  final double? width;
+  final double? height;
+  final String? html;
 
   // In milliseconds
-  final int cacheAge;
+  final int? cacheAge;
 
   Map<String, dynamic> toMap() {
     return {
@@ -78,7 +78,7 @@ class OEmbedResponse {
     };
   }
 
-  static OEmbedType parseType(String type) {
+  static OEmbedType parseType(String? type) {
     switch (type) {
       case "video":
         return OEmbedType.video;

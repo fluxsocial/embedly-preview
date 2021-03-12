@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class EmbedlyThemeData {
   factory EmbedlyThemeData({
-    Brightness brightness,
-    TextStyle headingText,
-    TextStyle subheadingText,
-    Color backgroundColor,
+    Brightness? brightness,
+    TextStyle? headingText,
+    TextStyle? subheadingText,
+    Color? backgroundColor,
     double elevation = 1.0,
   }) {
     if (brightness == Brightness.light) {
@@ -56,9 +56,9 @@ class EmbedlyThemeData {
     this.elevation,
   });
 
-  final Brightness brightness;
-  final TextStyle headingText;
-  final TextStyle subheadingText;
-  final Color backgroundColor;
-  final double elevation;
+  final Brightness? brightness;
+  final TextStyle? headingText;
+  final TextStyle? subheadingText;
+  final Color? backgroundColor;
+  final double? elevation;
 }

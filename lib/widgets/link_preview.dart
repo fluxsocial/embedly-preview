@@ -4,8 +4,8 @@ import 'package:embedly_preview/theme/theme.dart';
 
 class EmbedlyLinkPreview extends StatelessWidget {
   const EmbedlyLinkPreview({
-    Key key,
-    @required this.data,
+    Key? key,
+    required this.data,
   }) : super(key: key);
 
   final OEmbedResponse data;
@@ -29,12 +29,12 @@ class EmbedlyLinkPreview extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(9),
               child: Image.network(
-                data.thumbnailUrl,
+                data.thumbnailUrl!,
                 fit: BoxFit.cover,
               ),
             ),
           if (data.description != null)
-            data.description.isEmpty
+            data.description!.isEmpty
                 ? const SizedBox()
                 : Container(
                     padding: const EdgeInsets.symmetric(
@@ -45,10 +45,10 @@ class EmbedlyLinkPreview extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (data.description.isNotEmpty)
+                        if (data.description!.isNotEmpty)
                           Text(
-                            data.description,
-                            style: theme.subheadingText,
+                            data.description!,
+                            style: theme!.subheadingText,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),
