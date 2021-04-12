@@ -10,7 +10,7 @@ class OEmbedWidget extends StatefulWidget {
     Key? key,
     required this.data,
     this.theme,
-    required this.expanded,
+    this.expanded = true,
     required this.preview,
   }) : super(key: key);
 
