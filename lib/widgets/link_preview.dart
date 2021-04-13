@@ -34,7 +34,7 @@ class EmbedlyLinkPreview extends StatelessWidget {
               ),
             ),
           if (data.description != null)
-            if (data.description!.isEmpty)
+            if (data.description!.isNotEmpty)
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,

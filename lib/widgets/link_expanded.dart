@@ -45,7 +45,7 @@ class EmbedlyLinkExpanded extends StatelessWidget {
               ),
             ),
           if (data.description != null)
-            if (data.description!.isEmpty)
+            if (data.description!.isNotEmpty)
               Flexible(
                 child: Container(
                   padding: const EdgeInsets.symmetric(

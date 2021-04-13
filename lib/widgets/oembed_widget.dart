@@ -53,7 +53,8 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
             case OEmbedType.unsupported:
               return SizedBox();
             default:
-              if (widget.expanded) return EmbedlyLinkPreview(data: widget.data);
+              if (widget.expanded || widget.data.description == null)
+                return EmbedlyLinkPreview(data: widget.data);
               if (!widget.expanded)
                 return EmbedlyLinkExpanded(data: widget.data);
           }
