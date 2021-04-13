@@ -34,27 +34,30 @@ class EmbedlyLinkPreview extends StatelessWidget {
               ),
             ),
           if (data.description != null)
-            data.description!.isEmpty
-                ? const SizedBox()
-                : Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (data.description!.isNotEmpty)
-                          Text(
-                            data.description!,
-                            style: theme!.subheadingText,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                      ],
-                    ),
-                  ),
+            if (data.description!.isEmpty)
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 10,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (data.description!.isNotEmpty)
+                      Text(
+                        data.description!,
+                        style: theme!.subheadingText,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                  ],
+                ),
+              )
+            else
+              SizedBox()
+          else
+            SizedBox(),
         ],
       ),
     );
