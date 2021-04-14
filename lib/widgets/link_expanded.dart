@@ -44,29 +44,30 @@ class EmbedlyLinkExpanded extends StatelessWidget {
                 ),
               ),
             ),
-          data.description.isEmpty
-              ? const SizedBox()
-              : Flexible(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (data.description.isNotEmpty)
-                          Text(
-                            data.description,
-                            style: theme.subheadingText,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                      ],
+          if (data.description != null)
+            data.description.isEmpty
+                ? const SizedBox()
+                : Flexible(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (data.description.isNotEmpty)
+                            Text(
+                              data.description,
+                              style: theme.subheadingText,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
         ],
       ),
     );

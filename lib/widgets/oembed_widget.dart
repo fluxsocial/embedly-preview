@@ -54,7 +54,8 @@ class _OEmbedWidgetState extends State<OEmbedWidget> {
               return SizedBox();
               break;
             default:
-              if (widget.expanded) return EmbedlyLinkPreview(data: widget.data);
+              if (widget.expanded || widget.data.description == null)
+                return EmbedlyLinkPreview(data: widget.data);
               if (!widget.expanded)
                 return EmbedlyLinkExpanded(data: widget.data);
           }
